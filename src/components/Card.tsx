@@ -1,3 +1,4 @@
+import Link from "next/link";
 interface Product {
   id: number;
   title: string;
@@ -17,12 +18,13 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
+    <Link href={`/${product.category}/${product.id}`}>
     <div className="border rounded-lg shadow-md p-4 m-4 max-w-xs cursor-pointer bg-white hover:scale-105">
       <img
         src={product.image}
         alt={product.title}
         className="w-full h-48 object-contain rounded"
-      />
+        />
       <h2 className="text-lg font-semibold mt-2 h-[56px] line-clamp-2">{product.title}</h2>
       <p className="text-violet-600">{product.category}</p>
       <p className="text-gray-800 mt-1">${product.price.toFixed(2)}</p>
@@ -33,6 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </span>
       </div>
     </div>
+        </Link>
   );
 };
 

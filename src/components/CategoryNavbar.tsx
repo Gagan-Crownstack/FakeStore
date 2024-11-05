@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 const CategoryNavbar = () => {
   const [categories, setCategories] = useState<string[]>([]);
@@ -24,12 +25,11 @@ const CategoryNavbar = () => {
         {categories && categories.length > 0
           ? categories.map((item, i) => {
               return (
-                <span
-                  className="cursor-pointer p-2 hover:bg-violet-600"
-                  key={i}
-                >
-                  {item}
-                </span>
+                <Link href={`/${item}`} key={i}>
+                  <span className="cursor-pointer p-2 hover:bg-violet-600">
+                    {item}
+                  </span>
+                </Link>
               );
             })
           : "............."}

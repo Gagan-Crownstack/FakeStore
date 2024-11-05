@@ -15,7 +15,7 @@ body {
 li {
   cursor: pointer;
   padding: 8px 16px;
-  &:hover{
-   border-bottom: 2px solid rgb(183, 78, 183);
+  &:hover {
+    border-bottom: 2px solid rgb(183, 78, 183);
   }
 }
