@@ -32,7 +32,10 @@ export default function RootLayout({
       >
         <Navbar />
         <CategoryNavbar />
-        <main>{children}</main>
+        <main className="h-full min-h-screen">{children}</main>
+        <div className=" h-[200px] bg-violet-700 text-white p-10 text-2xl font-semibold">
+            Footer
+        </div>
       </body>
     </html>
   );

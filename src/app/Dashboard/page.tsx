@@ -12,7 +12,6 @@ const Dashboard = () => {
         setIsLoading(true);
         const res = await fetch("https://fakestoreapi.com/products");
         const data = await res.json();
-        console.log(data);
         setData(data);
         setIsLoading(false);
       } catch (e) {
@@ -22,7 +21,7 @@ const Dashboard = () => {
     getallData();
   }, []);
   return (
-    <div>
+    <div className="overflow-scroll">
       <div className="text-2xl  mt-5 px-4">All products :</div>
       <div className="grid place-items-center grid-cols-1 sm:grid-cols-2 sm:place-items-start lg:grid-cols-3 2xl:grid-cols-4">
         {!isLoading
