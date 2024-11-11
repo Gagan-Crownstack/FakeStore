@@ -2,12 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { notFound, useParams } from "next/navigation";
 import { Product } from "@/components/types";
+import { useDispatch } from "react-redux";
+import { addToCart } from "@/lib/features/cartSlice";
+
 const Productpage = () => {
   const params = useParams();
   console.log(useParams());
   const id = params.product;
   const [product, setProduct] = useState<Product | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (id) {
@@ -40,7 +44,7 @@ const Productpage = () => {
           <img
             src={product.image}
             alt={product.title}
-            className="w-1/2 min-w-[300px] h-auto object-cover rounded-lg"
+            className="w-1/2 min-w-[300px] h-auto object-contain rounded-lg"
           />
         </div>
         <div className="flex-1">
@@ -57,7 +61,9 @@ const Productpage = () => {
           </div>
           <div className="mt-4">
             <button
-              onClick={() => {}}
+              onClick={() => {
+                dispatch(addToCart(product));
+              }}
               className="text-white bg-violet-700 text-xl font-semibold px-4 py-2 rounded-md hover:opacity-85 outline-offset-2 active:outline active:outline-violet-500 active:opacity-70"
             >
               Add to Cart

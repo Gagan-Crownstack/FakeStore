@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CategoryNavbar from "@/components/CategoryNavbar";
+import { StoreProvider } from "@/lib/StoreProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,17 +27,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Navbar />
-        <CategoryNavbar />
-        <main className="h-full min-h-screen">{children}</main>
-        <div className=" h-[200px] bg-violet-700 text-white p-10 text-2xl font-semibold">
+    <StoreProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Navbar />
+          <CategoryNavbar />
+          <main className="h-full min-h-screen">{children}</main>
+          <div className=" h-[200px] bg-violet-700 text-white p-10 text-2xl font-semibold">
             Footer
-        </div>
-      </body>
-    </html>
+          </div>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
